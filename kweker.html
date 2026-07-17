@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kweker, De Plantenmakelaars</title>
+<meta name="description" content="Kweker bij De Plantenmakelaars: verhaal, galerij en actueel aanbod via Floriday.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="kwdetail">
+
+<header class="topbar has-back">
+  <a class="back-link" href="onze-kwekers.html">
+    <svg viewBox="0 0 24 12" fill="none"><path d="M24 6H2M7 1 2 6l5 5" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span data-lang-nl>Alle kwekers</span><span data-lang-en>All growers</span>
+  </a>
+  <div class="topbar-right">
+    <div class="lang-switch" role="group" aria-label="Taal / Language">
+      <button data-lang="nl" type="button">NL</button><span class="sep">/</span><button data-lang="en" type="button">EN</button>
+    </div>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu-overlay">
+  <nav aria-label="Hoofdmenu">
+    <a href="index.html"><span class="idx">01</span>Home</a>
+    <a href="over-ons.html"><span class="idx">02</span><span data-lang-nl>Over ons</span><span data-lang-en>About</span></a>
+    <a href="diensten.html"><span class="idx">03</span><span data-lang-nl>Diensten</span><span data-lang-en>Services</span></a>
+    <a href="onze-kwekers.html"><span class="idx">04</span><span data-lang-nl>Onze kwekers</span><span data-lang-en>Our growers</span></a>
+    <a href="contact.html"><span class="idx">05</span>Contact</a>
+  </nav>
+  <div class="menu-foot">
+    <a href="mailto:info@deplantenmakelaars.nl"><span class="todo">info@deplantenmakelaars.nl</span></a>
+    <span>2675 LP Honselersdijk</span>
+    <a href="#">Instagram</a><a href="#">LinkedIn</a>
+  </div>
+</div>
+
+<main class="kwd">
+
+  <!-- BOVENAAN: links info, rechts automatische fotoreeks -->
+  <section class="kwd-top">
+    <div class="kwd-info">
+      <img class="kwd-logo" src="images/kweker-beauty-plants.jpg" alt="" onerror="this.remove()">
+      <p class="eyebrow"><span data-lang-nl>Kweker</span><span data-lang-en>Grower</span></p>
+      <h1 class="kwd-name"><span data-lang-nl>Kwekerij</span><span data-lang-en>Grower</span></h1>
+      <p class="kwd-desc"></p>
+    </div>
+    <div class="kwd-slideshow" aria-hidden="true">
+      <img src="images/gallery-product-07.jpg" alt="" class="active" onerror="this.remove()">
+      <img src="images/gallery-bloem-06.jpg" alt="" onerror="this.remove()">
+      <img src="images/gallery-product-01.jpg" alt="" onerror="this.remove()">
+      <img src="images/gallery-bloem-17.jpg" alt="" onerror="this.remove()">
+      <img src="images/gallery-mix-11.jpg" alt="" onerror="this.remove()">
+      <img src="images/gallery-product-13.jpg" alt="" onerror="this.remove()">
+    </div>
+  </section>
+
+  <!-- DAARONDER: aanbod uit Floriday -->
+  <section class="kwd-aanbod">
+    <div class="kwd-aanbod-inner">
+      <h2><span data-lang-nl>Aanbod op Floriday</span><span data-lang-en>Range on Floriday</span></h2>
+      <p class="kwd-lead"><span data-lang-nl>Het actuele aanbod van deze kweker, automatisch opgehaald.</span><span data-lang-en>This grower's current range, fetched automatically.</span></p>
+      <div class="aanbod-grid"></div>
+      <p class="aanbod-note"><span data-lang-nl>Deze plekken worden automatisch gevuld met het actuele aanbod zodra de Floriday-koppeling actief is.</span><span data-lang-en>These slots will fill automatically with the live range once the Floriday connection is active.</span></p>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var k = params.get("k"), n = params.get("n");
+
+  // kort verhaaltje per kweker
+  var descriptions = {
+    "beauty-plants": "Beauty Plants kweekt met oog voor schoonheid de mooiste bloeiende planten voor binnen en buiten. Hun specialiteiten zijn de mediterrane Mandevilla, de bijzondere Anigozanthos en de winterharde Camellia. Met een marktgerichte visie vernieuwen ze hun assortiment voortdurend, op zoek naar nieuwe kleuren en betere variëteiten die de wereld een stukje mooier maken.",
+    "bushbrothers": "BushBrothers, onderdeel van Lansbergen Orchids, is het bedrijf van tweelingbroers Marco en Patrick, die de wereld afstruinen naar bijzondere plantensoorten. In hun kassen kweken ze een breed assortiment orchideeën, zoals Oncidium, Cambria en Cattleya, en daarnaast de groene Aglaonema.",
+    "continental-trees": "Continental Trees is gespecialiseerd in mediterrane bomen, van palm- en olijfbomen tot fruitbomen, met een focus op bewezen bestsellers voor de Europese markt. Daarnaast geven ze oude fruitbomen als appel en peer een tweede leven: na jaren van hard werken voor de kweker verdienen ze een mooi plekje in iemands tuin.",
+    "de-wintertuin": "De Wintertuin is een trots familiebedrijf uit het Westland en al sinds 2001 specialist in Bougainvillea. Op 5,5 hectare kweken ze deze mediterrane bloeier in allerlei kleuren en maten, uitstekend geschikt voor het Noord-Europese klimaat. Vakmanschap en innovatie zorgen samen voor constante kwaliteit en betrouwbaarheid, seizoen na seizoen.",
+    "deconell": "DecoNell van Michel van Doorn is gespecialiseerd in hoogwaardige seizoensdecoraties voor het hele jaar, van herfst en advent tot kerst, Valentijn en Pasen. Daarnaast biedt DecoNell professionele plant support, zoals stekken, enten en sorteren. Met precisie, creativiteit en een groeiend netwerk brengen ze door heel Europa warmte, kleur en sfeer.",
+    "drenthe-flowers": "Drenthe Flowers is een noordelijke kwekerij met een herkenbaar en sfeervol merk. Met vakmanschap en een frisse uitstraling telen ze planten waar ze trots op zijn. Samen met De Plantenmakelaars zorgen we dat hun product op het juiste moment en bij de juiste koper in de markt terechtkomt.",
+    "dynaplant": "Dynaplant is een moderne potplantenkwekerij en een gewaardeerde partner binnen ons netwerk. Met oog voor kwaliteit en een betrouwbaar assortiment leveren ze planten waar de markt op zit te wachten. Samen zorgen we dat hun product op de juiste plek en op het juiste moment tot bloei komt in de handel.",
+    "flevoplant": "Flevoplant is een moderne potplantenkwekerij die met vakmanschap en oog voor kwaliteit een betrouwbaar assortiment levert. Efficiënt en toekomstgericht telen ze planten van constante kwaliteit. Samen met De Plantenmakelaars zorgen we dat hun product de juiste weg naar exporteurs, retail en tuincentra vindt.",
+    "fondieplant": "Fondieplant is een van de grootste gespecialiseerde kwekers van de Areca-palm, oftewel Dypsis lutescens of goudpalm, in Europa. Deze luchtzuiverende kamerplant brengt met zijn sierlijke, veervormige bladeren een tropische, groene sfeer in huis. Dankzij hun specialisatie en schaal staan ze garant voor constante kwaliteit en betrouwbaarheid.",
+    "gevers": "Gevers Planten is een moderne, geautomatiseerde potplantenkwekerij in Asten-Heusden die al ruim 60 jaar innovatief te werk gaat. Ze telen jaarrond seizoensplanten zoals cyclamen, kerststerren, geraniums en platycodon, steeds afgestemd op de wens van de klant. Tevredenheid van de consument, in binnen- en buitenland, staat bij hen centraal.",
+    "ichtus": "Ichtus Flowers & Plants brengt kleur naar jouw wereld met de snij-Phalaenopsis en de groene planten Alocasia en Philodendron. Vanuit Waddinxveen telen ze een uniek assortiment tropische schoonheden voor interieurs en events over de hele wereld. Ze zijn altijd op zoek naar nieuwe variëteiten en bijzondere soorten die indruk maken.",
+    "lkp": "LKP Plants is met vijftig jaar ervaring een echte specialist in bromelia's. Deze kleurrijke kamerplant, met zijn opvallende bloeiwijze en sterke karakter, voegt sfeer en tropische flair toe aan elk interieur. Jarenlange kennis en vakmanschap maken hun assortiment betrouwbaar en constant van hoge kwaliteit.",
+    "meerrust": "Meerrust uit Maasdijk is gespecialiseerd in azalea, margriet en fuchsia op stam, en in hangplanten. Stuk voor stuk fleurige planten die kleur brengen op terras en in de tuin. Met vakmanschap en oog voor detail leveren ze een verzorgd assortiment, precies op tijd voor het seizoen.",
+    "meeuwisse": "Meewisse Plants uit het Drentse Erica is een van de grootste bromelia-kwekerijen van Europa. Op 80.000 m² telen ze jaarlijks meer dan twee miljoen kleurrijke bromelia's, niet voor niets de 'queen of colors'. Met een moderne kwekerij en jarenlange ervaring staan ze garant voor kwaliteit en een lange bloei.",
+    "olij": "Olij Trading uit De Kwakel is gespecialiseerd in de Dianthus Barbatus Kiwi Mellow in diverse kleuren, potanjers als Pink Kisses en I Love U, en kerststerren. Fleurige planten voor terras en interieur, in een duurzaam bedrijf dat volop inzet op zonne-energie. Kwaliteit en betrouwbaarheid staan bij elke teelt voorop.",
+    "patio": "Patio Plants uit Klazienaveen brengt met fleurige terras- en patioplanten kleur op elk balkon en terras. Met een breed seizoensassortiment en oog voor kwaliteit is er voor elke buitenruimte iets moois te vinden. Samen zorgen we dat hun planten op het juiste moment bij de juiste koper terechtkomen.",
+    "rs-potplants": "RS Potplants heeft een groot en divers aanbod in toegevoegde waarde en arrangementen. Ze zijn gespecialiseerd in het opmaken van plantenbakken en het leveren van maatwerk, precies afgestemd op de wens van de klant. Zo maken ze van elke bestelling net even iets bijzonders, klaar voor het schap.",
+    "sentinel": "Sentinel is dé toonaangevende kweker van de Scindapsus in Nederland en teelt deze luchtzuiverende kamerplant al sinds 1987. Groen, duurzaam en innovatief, met een breed assortiment Scindapsus, Epipremnum en Philodendron. Samen met hun zusterkwekerij in Oeganda werken ze aan sterke stekken en steeds vernieuwende teeltconcepten.",
+    "sjaak-van-schie": "Sjaak van Schie is een gerenommeerde kweker van groene kamerplanten, met een breed en betrouwbaar assortiment. Met vakmanschap en jarenlange ervaring leveren ze constante kwaliteit voor de hele markt. Samen zorgen we dat hun planten op de juiste plek en op het juiste moment in de handel terechtkomen.",
+    "spaargaren": "Spaargaren van Doorn uit Nieuwveen is de grootste leverancier van de luchtzuiverende Livistona rotundifolia, ook wel de waaierpalm. Ze bieden een breed assortiment palmen, los en in zorgvuldig samengestelde mixen, met veel aandacht voor duurzaamheid. Van hergebruikte materialen tot handgedraaide potten: kwaliteit en verantwoord ondernemen gaan hand in hand.",
+    "sunshine-grow": "Sunshine Grow is een familiebedrijf dat op duurzame, CO₂-neutrale en veenvrije wijze zonnige potplanten kweekt, met eigen locaties in Nederland en Spanje. Hun assortiment bestaat onder meer uit Croton, Hibiscus en Oleander. Betrouwbaarheid, flexibiliteit en direct contact met de kweker staan bij hen voorop, altijd in consumentgerichte verpakking.",
+    "vd-peijl": "Van der Peijl Tuinplanten uit Zundert combineert al ruim 50 jaar vakmanschap met innovatie. Op meer dan 10 hectare telen ze een breed assortiment sierheesters in pot, met ruim 300 soorten waaronder zo'n 60 soorten hortensia. Met exclusieve variëteiten en een moderne, efficiënte werkwijze blijven ze continu vernieuwen.",
+    "vlasman": "Kwekerij Vlasman uit Mijdrecht is met het frisse merk Voilà dé specialist in de Saintpaulia, het Kaaps viooltje. Op ruim 30.000 m² telen ze dagelijks met passie de mooiste, kleurrijke Saintpaulia's, hip, lief én leuk. In de juiste ompot past dit vrolijke plantje perfect bij zowel een vintage als een modern interieur.",
+    "vries": "J. de Vries Potplantencultures is een potplantenkwekerij met oog voor kwaliteit en een betrouwbaar assortiment. Met vakmanschap en jarenlange ervaring telen ze planten van constante kwaliteit. Samen met De Plantenmakelaars zorgen we dat hun product op de juiste plek en op het juiste moment in de markt terechtkomt.",
+    "winco": "Winco Holland maakt bijzondere cactussen en vetplanten voor iedereen bereikbaar, beyond the ordinary. Met de collecties Surprising Sierra's en het kwaliteitslabel Decorum bieden ze meer dan 600 soorten, plus snijvetplanten onder de namen Wincx en Mecx. Van vertrouwde klassiekers tot zeldzame vondsten: hun assortiment verrast telkens opnieuw.",
+  };
+
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  if (n) {
+    var nm = document.querySelector(".kwd-name");
+    if (nm) nm.textContent = n;
+    document.title = n + ", De Plantenmakelaars";
+    var lead = document.querySelector(".kwd-lead");
+    if (lead) lead.innerHTML = '<span data-lang-nl>Het actuele aanbod van ' + esc(n) + ', automatisch opgehaald.</span><span data-lang-en>' + esc(n) + '&rsquo;s current range, fetched automatically.</span>';
+  }
+  if (k) {
+    var lg = document.querySelector(".kwd-logo");
+    if (lg) { lg.src = "images/kweker-" + k + ".jpg"; lg.alt = n || "Logo kwekerij"; }
+  }
+  var de = document.querySelector(".kwd-desc");
+  if (de) {
+    de.textContent = (k && descriptions[k]) ? descriptions[k]
+      : "Een gewaardeerde kweker binnen ons netwerk. Samen zorgen we dat dit moois op de juiste plek in de markt komt.";
+  }
+
+  // rechts: foto's komen automatisch voorbij (fade)
+  var slides = document.querySelectorAll(".kwd-slideshow img");
+  if (slides.length > 1) {
+    var si = 0;
+    setInterval(function () {
+      slides[si].classList.remove("active");
+      si = (si + 1) % slides.length;
+      slides[si].classList.add("active");
+    }, 2600);
+  }
+
+  /* AANBOD uit Floriday (klaar voor koppeling)
+     Feed levert JSON: [ { "image": "...", "name": "..." }, ... ]
+     Nu: data/aanbod/<slug>.json  — later de Floriday-serverless-functie:
+     var FEED = "/.netlify/functions/floriday-aanbod?k=" + k; */
+  var grid = document.querySelector(".aanbod-grid");
+  var note = document.querySelector(".aanbod-note");
+  if (grid) {
+    // alvast 50 lege vakjes tonen waar het aanbod in komt
+    var frag = document.createDocumentFragment();
+    var exImg = "images/aanbod-voorbeeld.jpg";
+    var exInfo = '<div class="ac-info">' +
+      '<span class="ac-name">Monstera \'Minima\'</span>' +
+      '<span class="ac-row"><span class="ac-k">Potmaat</span><span class="ac-v">14 cm</span></span>' +
+      '<span class="ac-row"><span class="ac-k">Hoogte</span><span class="ac-v">55 cm</span></span>' +
+      '<span class="ac-row"><span class="ac-k">Belading</span><span class="ac-v">2x4x10</span></span>' +
+      '<span class="ac-row"><span class="ac-k">Prijs</span><span class="ac-v">&euro; 6,60</span></span>' +
+      '</div>';
+    for (var p = 0; p < 50; p++) {
+      var ph = document.createElement("div");
+      ph.className = "aanbod-card";
+      ph.innerHTML = '<span class="ph"><img src="' + exImg + '" alt="Monstera Minima" loading="lazy" onerror="this.remove()"></span>' + exInfo;
+      frag.appendChild(ph);
+    }
+    grid.appendChild(frag);
+  }
+  if (k && grid) {
+    var FEED = "data/aanbod/" + k + ".json";
+    fetch(FEED)
+      .then(function (r) { if (!r.ok) throw new Error("geen feed"); return r.json(); })
+      .then(function (items) {
+        if (!Array.isArray(items) || !items.length) throw new Error("leeg");
+        grid.innerHTML = "";               // placeholder-vakjes vervangen
+        if (note) note.remove();
+        function row(label, val) {
+          return val ? '<span class="ac-row"><span class="ac-k">' + label + '</span><span class="ac-v">' + esc(val) + '</span></span>' : "";
+        }
+        items.forEach(function (it) {
+          var card = document.createElement("div");
+          card.className = "aanbod-card";
+          var info = '<div class="ac-info"><span class="ac-name">' + esc(it.name || "") + '</span>' +
+            row("Potmaat", it.potmaat) + row("Hoogte", it.hoogte) +
+            row("Belading", it.belading) + row("Prijs", it.prijs) + '</div>';
+          card.innerHTML = '<span class="ph"><img src="' + it.image + '" alt="' + esc(it.name || "") + '" loading="lazy" onerror="this.remove()"></span>' + info;
+          grid.appendChild(card);
+        });
+      })
+      .catch(function () { /* nog geen feed: lege vakjes + toelichting blijven staan */ });
+  }
+})();
+</script>
+</body>
+</html>

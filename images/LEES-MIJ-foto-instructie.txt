@@ -1,0 +1,74 @@
+FOTO'S TOEVOEGEN — De Plantenmakelaars
+=======================================
+
+De site toont automatisch jouw foto's zodra je ze in DEZE map ('images')
+zet met exact de juiste bestandsnaam. Tot die tijd zie je een strakke
+licht-groene/verloop-achtergrond als plaatsvervanger — de site werkt dus
+gewoon, maar komt pas écht tot leven met mooie, scherpe plantenfoto's.
+
+----------------------------------------------------------------
+GRATIS, PROFESSIONELE FOTO'S VINDEN (mag je vrij gebruiken)
+----------------------------------------------------------------
+Ga naar een van deze sites en zoek op de termen hieronder. Download
+in de hoogste resolutie en sleep het bestand in deze map.
+
+  - https://www.pexels.com
+  - https://unsplash.com
+  - https://pixabay.com
+
+Goede zoektermen (NL/EN):
+  - "greenhouse plants" / "kas planten"
+  - "plant nursery"  (plantenkwekerij)
+  - "houseplants" / "kamerplanten"
+  - "monstera greenhouse"
+  - "potted plants greenhouse"
+  - "botanical green leaves"
+
+TIP: kies foto's met een rustige, samenhangende sfeer (zelfde licht /
+zelfde groentint), dan oogt de hele site als één geheel en heel "gelikt".
+
+Nog mooier en uniek: laat een fotograaf echte foto's maken in júllie kas
+en van jullie kamerplanten — dan is alles 100% eigen en herkenbaar.
+
+----------------------------------------------------------------
+TECHNISCHE TIPS
+----------------------------------------------------------------
+- Exact dezelfde bestandsnaam gebruiken (kleine letters, .jpg).
+- Schermvullende beelden: liggend (landscape), min. 2000 px breed.
+- Editorial beelden naast tekst: staand (portret) werkt mooi.
+- Teamportretten: staand, ca. 800 x 1000 px.
+- Verklein tot < 500 KB per foto voor snelheid: squoosh.app of tinypng.com
+
+----------------------------------------------------------------
+BENODIGDE FOTO'S
+----------------------------------------------------------------
+
+HOME (index.html)
+  hero.jpg          -> GROOT openingsbeeld (schermvullend). Sfeervolle kas
+                       met planten, mooi licht. Dit is het visitekaartje.
+  expertise.jpg     -> staand beeld naast "60 jaar expertise"
+  expertise2.jpg    -> staand beeld naast "Hoe we jou laten groeien"
+  grower.jpg        -> schermvullend beeld achter de cijfers
+  cta.jpg           -> sfeerbeeld bij de oproep (ook gebruikt op andere pagina's)
+
+OVER ONS (over-ons.html)
+  about-hero.jpg    -> schermvullend openingsbeeld
+  story.jpg         -> staand beeld bij "ons verhaal"
+  about-stats.jpg   -> schermvullend beeld achter de cijfers
+  menno.jpg         -> portret Menno van Es (staand)
+  wouter.jpg        -> portret Wouter van Es (staand)
+  wilfred.jpg       -> portret Wilfred (staand)
+
+DIENSTEN (diensten.html)
+  services-hero.jpg -> schermvullend openingsbeeld
+  service-1.jpg     -> staand beeld bij Persoonlijke verkoop
+  service-2.jpg     -> schermvullend beeld bij Strategisch advies
+  service-3.jpg     -> staand beeld bij GreenPowerBI
+  service-4.jpg     -> schermvullend beeld bij Productfotografie
+
+CONTACT (contact.html)
+  contact.jpg       -> liggend sfeerbeeld bij de contactgegevens
+
+----------------------------------------------------------------
+Heb je nog niet voor elke plek een foto? Gebruik tijdelijk hetzelfde
+mooie beeld onder meerdere namen (kopiëren en hernoemen).

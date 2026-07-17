@@ -1,0 +1,18 @@
+[
+  {
+    "image": "https://voorbeeld.nl/foto1.jpg",
+    "name": "Cyclaam Fantasia roze",
+    "potmaat": "13 cm",
+    "hoogte": "30 cm",
+    "belading": "10 x 8",
+    "prijs": "€ 2,15"
+  },
+  {
+    "image": "https://voorbeeld.nl/foto2.jpg",
+    "name": "Phalaenopsis wit 2-tak",
+    "potmaat": "12 cm",
+    "hoogte": "60 cm",
+    "belading": "8 x 10",
+    "prijs": "€ 4,95"
+  }
+]
