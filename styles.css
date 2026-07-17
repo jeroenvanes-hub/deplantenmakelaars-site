@@ -338,10 +338,13 @@ body.menu-open .menu-overlay a:nth-child(4) { animation-delay: .33s; }
 @media (max-width: 720px) { .bignum { grid-template-columns: auto 1fr; } .bignum p { grid-column: 1 / -1; } }
 
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 5vw, 64px) clamp(24px, 3vw, 56px); width: 100%; }
-@media (max-width: 640px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 .stats .num { font-family: var(--font-head); font-weight: 800; font-size: clamp(2.8rem, 5vw, 4.8rem); line-height: .9; white-space: nowrap; }
 .stats .lab { margin-top: .9rem; color: var(--muted); max-width: 24ch; }
-@media (max-width: 760px) { .stats { grid-template-columns: 1fr; gap: 2.4rem; } }
+@media (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, 1fr); gap: clamp(30px, 8vw, 46px) clamp(18px, 5vw, 30px); }
+  .stats .num { font-size: clamp(2rem, 9.5vw, 3rem); }
+  .stats .lab { margin-top: .55rem; font-size: .92rem; max-width: 18ch; }
+}
 
 .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 2.4vw, 34px); width: 100%; }
 @media (max-width: 900px) { .team { grid-template-columns: repeat(2, 1fr); max-width: 640px; } }
