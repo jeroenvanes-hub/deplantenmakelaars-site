@@ -1,0 +1,15 @@
+BACKUP — Onze kwekers-pagina (verwijderd op verzoek, herstelbaar)
+
+Bestanden:
+- onze-kwekers.html  = de logowand met Prestige-partners en Premium-partners (25 kwekers, alfabetisch), oranje kopjes.
+- kweker.html        = individuele kwekerpagina (via ?k=<slug>&n=<Naam>): logo, verhaaltje, fotoslideshow + Floriday-aanbod (voorbeeldvakjes).
+
+Bijbehorend (blijven staan, ongebruikt): images/kweker-*.jpg (25 genormaliseerde logos), data/aanbod/.
+
+HERSTELLEN (als de gebruiker erom vraagt):
+1. Verplaats onze-kwekers.html en kweker.html terug uit _backup/ naar de hoofdmap.
+2. Voeg in het menu (alle html) weer toe vóór Contact:
+   <a href="onze-kwekers.html"><span class="idx">04</span><span data-lang-nl>Onze kwekers</span><span data-lang-en>Our growers</span></a>
+   en zet Contact terug op idx 05.
+3. Voeg in de footer-menukolom (alle html) weer toe:
+   <a href="onze-kwekers.html"><span data-lang-nl>Onze kwekers</span><span data-lang-en>Our growers</span></a>

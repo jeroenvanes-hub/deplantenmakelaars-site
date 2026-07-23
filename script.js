@@ -4,6 +4,58 @@
 
   var body = document.body;
 
+  /* ---------- Contactgegevens veilig opbouwen (anti-crawler) ---------- */
+  try {
+    var dec = function (s) { try { return decodeURIComponent(escape(window.atob(s))); } catch (e) { return window.atob(s); } };
+    document.querySelectorAll("a.cx-mail[data-e]").forEach(function (a) {
+      var e = dec(a.getAttribute("data-e"));
+      a.href = "mailto:" + e;
+      a.textContent = e;
+    });
+    document.querySelectorAll("a.cx-tel[data-t]").forEach(function (a) {
+      var t = dec(a.getAttribute("data-t"));
+      var d = a.getAttribute("data-d") ? dec(a.getAttribute("data-d")) : t;
+      a.href = "tel:" + t;
+      a.textContent = d;
+    });
+  } catch (e) {}
+
+  /* ---------- Quotes: sterren + live "typen" ---------- */
+  var quotesWrap = document.querySelector(".quotes");
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function startQuotes() {
+    quotesWrap.classList.add("qshow");
+    if (reduceMotion) return;
+    document.querySelectorAll(".quote blockquote").forEach(function (bq) {
+      bq.classList.add("tw-on");
+      var maxLen = 0;
+      bq.querySelectorAll("[data-lang-nl],[data-lang-en]").forEach(function (sp) {
+        var full = sp.textContent;
+        sp.textContent = "";
+        maxLen = Math.max(maxLen, full.length);
+        var i = 0;
+        (function tick() {
+          sp.textContent = full.slice(0, i);
+          if (i < full.length) { i++; setTimeout(tick, 26); }
+        })();
+      });
+      setTimeout(function () { bq.classList.remove("tw-on"); }, maxLen * 26 + 500);
+    });
+  }
+  if (quotesWrap) {
+    if ("IntersectionObserver" in window) {
+      var started = false;
+      var qobs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && !started) { started = true; startQuotes(); }
+        });
+      }, { threshold: 0.4 });
+      qobs.observe(quotesWrap);
+    } else {
+      startQuotes();
+    }
+  }
+
   /* ---------- Fullscreen menu ---------- */
   var toggle = document.querySelector(".menu-toggle");
   if (toggle) {
