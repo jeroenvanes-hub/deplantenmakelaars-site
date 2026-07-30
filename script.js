@@ -27,6 +27,8 @@
     quotesWrap.classList.add("qshow");
     if (reduceMotion) return;
     document.querySelectorAll(".quote blockquote").forEach(function (bq) {
+      // reserveer meteen de volledige eindhoogte, zodat het oranje vak niet meegroeit met de tekst
+      bq.style.minHeight = Math.ceil(bq.getBoundingClientRect().height) + "px";
       bq.classList.add("tw-on");
       var maxLen = 0;
       bq.querySelectorAll("[data-lang-nl],[data-lang-en]").forEach(function (sp) {

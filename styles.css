@@ -337,7 +337,7 @@ body.menu-open .menu-overlay .menu-foot > *:nth-child(4) { animation-delay: .62s
 @media (max-width: 860px) {
   .split { grid-template-columns: 1fr; gap: clamp(28px, 6vw, 48px); }
   .split--media-right .media, .split .media { order: -1; }
-  .media { aspect-ratio: 3 / 2; }
+  .media { aspect-ratio: 5 / 4; }
 }
 
 .tick-list { margin-top: 1.6rem; display: grid; gap: .9rem; }
@@ -578,6 +578,25 @@ body.kweker-page .gallery-intro .display { font-size: clamp(1.9rem, 4.6vw, 3.3re
 @keyframes shDown { 0% { transform: translateY(-100%); } 55%, 100% { transform: translateY(230%); } }
 @media (prefers-reduced-motion: reduce) { .scroll-hint .sh-fill { animation: none; top: auto; bottom: 0; } }
 
+/* telefoon: telefoonnummers onder de e-mails bij Contact (team) */
+@media (max-width: 600px) {
+  .cinfo .cx-tel { display: block; margin-top: .12rem; }
+  .cinfo .sep-dot { display: none; }
+}
+
+/* telefoon: horizontale galerij = "Swipe" i.p.v. verticaal "Scroll" */
+.swipe-hint { display: none; }
+@media (max-width: 860px) {
+  .scroll-hint { display: none; }
+  .swipe-hint { display: inline-flex; align-items: center; gap: .9rem; margin-top: 2.1rem; color: rgba(255,255,255,.7); }
+  .swipe-hint .sh-label { font-family: var(--font-label); text-transform: uppercase; letter-spacing: .3em; font-size: .78rem; }
+  .sw-track { position: relative; width: 84px; height: 2px; background: rgba(255,255,255,.18); border-radius: 2px; overflow: hidden; }
+  .sw-fill { position: absolute; left: 0; top: 0; height: 100%; width: 45%; background: var(--accent-d); border-radius: 2px; animation: shRight 1.9s cubic-bezier(.65,0,.35,1) infinite; }
+  .sw-arrow { width: 18px; height: 18px; color: var(--accent-d); }
+}
+@keyframes shRight { 0% { transform: translateX(230%); } 55%, 100% { transform: translateX(-100%); } }
+@media (prefers-reduced-motion: reduce) { .sw-fill { animation: none; left: auto; right: 0; } }
+
 .shot { align-self: center; }
 /* scroll-reveal: foto's en scheidingen faden zacht omhoog in beeld */
 .shot .ph { display: block; height: 72vh; height: 72svh; width: auto; min-width: 18rem; max-width: 88vw; border-radius: 12px; overflow: hidden; position: relative; background: linear-gradient(155deg, #2f3a2a, #b15e34); }
@@ -600,6 +619,42 @@ body.kweker-page .gallery-intro .display { font-size: clamp(1.9rem, 4.6vw, 3.3re
 @media (max-width: 760px) {
   .shot { width: 82vw; }
   .gallery-intro { width: 84vw; }
+}
+/* telefoon: hele foto zichtbaar op natuurlijke verhouding, kleiner, niet uitgerekt of afgesneden */
+@media (max-width: 600px) {
+  .shot { width: auto; }
+  .shot .ph {
+    display: inline-block;
+    height: auto; width: auto; aspect-ratio: auto;
+    min-width: 0; max-width: 88vw; max-height: 64vh;
+  }
+  .shot .ph img {
+    height: auto; width: auto; max-width: 88vw; max-height: 64vh; object-fit: contain;
+  }
+  .gallery-divider, .gallery-end { height: 62vh; }
+}
+
+/* ALLEEN telefoon/tablet — desktop blijft exact zoals het was */
+@media (max-width: 860px) {
+  /* personen vierkant op telefoon */
+  .media.media--sq { aspect-ratio: 1 / 1; }
+  .member .frame { aspect-ratio: 1 / 1; }
+  .member .frame img[src$="fte.jpg"] { object-position: 58% 10%; }
+  .media--sq img[src$="fte.jpg"] { object-position: 58% 10%; }
+  /* fotokaart-uitsnede (jouw posities uit de sleep-tool) */
+  .media img[src$="service-academy.jpg"]       { object-position: 50% 39%; }
+  .media img[src$="expertise.jpg"]             { object-position: 51% 23%; }
+  .media img[src$="story.jpg"]                 { object-position: 49% 81%; }
+  .media img[src$="service-1.jpg"]             { object-position: 50% 62%; }
+  .media img[src$="service-beurzen.jpg"]       { object-position: 49% 64%; }
+  .media img[src$="service-floriworld.jpg"]    { object-position: 52% 36%; }
+  .media img[src$="service-floraconcepts.jpg"] { object-position: 53% 32%; }
+  .media img[src$="service-4.jpg"]             { object-position: 48% 93%; }
+  .media img[src$="service-3.jpg"]             { object-position: 52% 39%; }
+  /* schermvullende achtergronden (jouw posities) */
+  .panel-bg img[src$="/hero.jpg"]              { object-position: 37% 50%; }
+  .panel-bg img[src$="about-hero.jpg"]         { object-position: 72% 52%; }
+  .panel-bg img[src$="service-2.jpg"]          { object-position: 63% 44%; }
 }
 
 /* ===========================================================
@@ -692,13 +747,14 @@ html[lang="en"] [data-lang-en] { display: revert; }
   .contact-cols h1 { font-size: clamp(2rem, 9vw, 2.6rem) !important; }
   .bignum h3 { font-size: clamp(1.4rem, 6vw, 1.9rem) !important; }
   .member h3 { font-size: 1.15rem; }
-  .menu-overlay a { font-size: clamp(2rem, 7.5vw, 2.7rem); }
+  .menu-overlay nav a { font-size: clamp(4rem, 15vw, 5.4rem); }
+  .menu-foot a { font-size: clamp(1.25rem, 5.3vw, 1.65rem); }
 
   /* minder loze ruimte in de secties */
   .panel--auto { padding-block: clamp(64px, 12vh, 104px); }
 
-  /* marquee-logo's een stuk kleiner */
-  .logo-track img { height: clamp(54px, 15vw, 74px); margin-right: clamp(34px, 10vw, 58px); }
+  /* marquee-logo's — 1,5x groter op telefoon */
+  .logo-track img { height: clamp(80px, 22vw, 110px); margin-right: clamp(40px, 12vw, 70px); }
 
   /* stats en tekst passend */
   .stats .num { font-size: clamp(1.9rem, 9vw, 2.6rem); }
