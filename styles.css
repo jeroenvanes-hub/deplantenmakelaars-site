@@ -338,6 +338,9 @@ body.menu-open .menu-overlay .menu-foot > *:nth-child(4) { animation-delay: .62s
   .split { grid-template-columns: 1fr; gap: clamp(28px, 6vw, 48px); }
   .split--media-right .media, .split .media { order: -1; }
   .media { aspect-ratio: 5 / 4; }
+  /* telefoon: geen scroll-snap, gewoon vloeiend doorscrollen */
+  html { scroll-snap-type: none; }
+  .panel { scroll-snap-align: none; }
 }
 
 .tick-list { margin-top: 1.6rem; display: grid; gap: .9rem; }
