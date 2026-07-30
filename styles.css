@@ -521,7 +521,7 @@ body.menu-open .pager { color: #fff; }
 .socials a:hover { border-color: var(--accent-d); color: var(--accent-d); }
 .socials svg { width: 18px; height: 18px; }
 .footer-bottom { margin-top: clamp(34px, 5vw, 56px); padding-top: 1.6rem; border-top: 1px solid var(--line-d); display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem 1.4rem; font-size: .85rem; color: var(--faint); }
-@media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } .footer-col + .footer-col { margin-top: 30px; } }
 
 /* ronddraaiend logo, rechts onderaan elke pagina onder de privacyverklaring */
 .footer-badge { width: 100%; display: flex; justify-content: flex-end; margin-top: clamp(28px, 5vw, 60px); }
