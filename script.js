@@ -125,7 +125,7 @@
           if (en.intersectionRatio >= 0.5) setActive(panels.indexOf(en.target));
         }
       });
-    }, { threshold: [0.15, 0.5, 0.75] });
+    }, { threshold: [0.15, 0.5, 0.75], rootMargin: "0px 0px 20% 0px" });
     panels.forEach(function (p) { io.observe(p); });
   } else {
     panels.forEach(function (p) { p.classList.add("in"); });
