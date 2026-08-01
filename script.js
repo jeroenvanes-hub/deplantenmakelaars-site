@@ -26,22 +26,29 @@
   function startQuotes() {
     quotesWrap.classList.add("qshow");
     if (reduceMotion) return;
+    var MS_PER_CHAR = 9; // tempo per teken
     document.querySelectorAll(".quote blockquote").forEach(function (bq) {
-      // reserveer meteen de volledige eindhoogte, zodat het oranje vak niet meegroeit met de tekst
-      bq.style.minHeight = Math.ceil(bq.getBoundingClientRect().height) + "px";
-      bq.classList.add("tw-on");
-      var maxLen = 0;
       bq.querySelectorAll("[data-lang-nl],[data-lang-en]").forEach(function (sp) {
         var full = sp.textContent;
+        // hele tekst meteen op zijn plek (elk teken onzichtbaar) -> geen terugspringen tijdens het typen
         sp.textContent = "";
-        maxLen = Math.max(maxLen, full.length);
-        var i = 0;
-        (function tick() {
-          sp.textContent = full.slice(0, i);
-          if (i < full.length) { i++; setTimeout(tick, 26); }
-        })();
+        var chars = [];
+        for (var i = 0; i < full.length; i++) {
+          var c = document.createElement("span");
+          c.className = "tw-c";
+          c.textContent = full.charAt(i);
+          sp.appendChild(c);
+          chars.push(c);
+        }
+        var start = null;
+        function frame(t) {
+          if (start === null) start = t;
+          var n = Math.min(chars.length, Math.round((t - start) / MS_PER_CHAR));
+          for (var i = 0; i < n; i++) chars[i].style.opacity = 1;
+          if (n < chars.length) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
       });
-      setTimeout(function () { bq.classList.remove("tw-on"); }, maxLen * 26 + 500);
     });
   }
   if (quotesWrap) {
