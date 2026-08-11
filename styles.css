@@ -223,6 +223,15 @@ body.menu-open .menu-overlay .menu-foot > *:nth-child(4) { animation-delay: .62s
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg fill='none' stroke='%23c9784f' stroke-width='1' stroke-opacity='0.12'%3E%3Cpath d='M0 120 Q150 60 300 120 T600 120'/%3E%3Cpath d='M0 200 Q150 140 300 200 T600 200'/%3E%3Cpath d='M0 280 Q150 220 300 280 T600 280'/%3E%3Cpath d='M0 360 Q150 300 300 360 T600 360'/%3E%3Cpath d='M0 440 Q150 380 300 440 T600 440'/%3E%3Cpath d='M0 520 Q150 460 300 520 T600 520'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 760px; opacity: .5; }
 
+/* lichte panel met abstracte lijnen + warme gloed */
+.panel--linework { position: relative; }
+.panel--linework::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Cg fill='none' stroke='%23a05f34' stroke-width='1.1' stroke-opacity='0.16'%3E%3Cpath d='M0 90 Q200 30 400 90 T800 90'/%3E%3Cpath d='M0 170 Q200 110 400 170 T800 170'/%3E%3Cpath d='M0 250 Q200 190 400 250 T800 250'/%3E%3Cpath d='M0 330 Q200 270 400 330 T800 330'/%3E%3Cpath d='M0 410 Q200 350 400 410 T800 410'/%3E%3Cpath d='M0 490 Q200 430 400 490 T800 490'/%3E%3Cpath d='M0 570 Q200 510 400 570 T800 570'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 900px auto; opacity: .85;
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 40%, #000 55%, transparent 92%);
+          mask-image: radial-gradient(120% 100% at 50% 40%, #000 55%, transparent 92%); }
+.panel--linework .panel-inner { position: relative; z-index: 1; }
+
 /* LICHTE panels */
 .panel--light { background: var(--paper); color: var(--ink); }
 .panel--paper { background: var(--paper-2); color: var(--ink); }
@@ -256,6 +265,7 @@ body.menu-open .menu-overlay .menu-foot > *:nth-child(4) { animation-delay: .62s
 .panel--light .cinfo .row p, .panel--paper .cinfo .row p { color: var(--ink); }
 .panel--light .form-note, .panel--paper .form-note { color: #9aa79d; }
 .panel--light .form-status, .panel--paper .form-status { color: var(--accent-l); }
+.panel--light .form-err, .panel--paper .form-err { color: #b23b2e; }
 
 /* ---------- reveal ---------- */
 .rise { opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
@@ -653,7 +663,6 @@ body.kweker-page .gallery-intro .display { font-size: clamp(1.9rem, 4.6vw, 3.3re
   .member .frame img[src$="fte.jpg"] { object-position: 58% 10%; }
   .media--sq img[src$="fte.jpg"] { object-position: 58% 10%; }
   /* fotokaart-uitsnede (jouw posities uit de sleep-tool) */
-  .media img[src$="service-academy.jpg"]       { object-position: 50% 39%; }
   .media img[src$="expertise.jpg"]             { object-position: 51% 23%; }
   .media img[src$="story.jpg"]                 { object-position: 49% 81%; }
   .media img[src$="service-1.jpg"]             { object-position: 50% 62%; }

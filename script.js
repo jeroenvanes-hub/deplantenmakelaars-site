@@ -138,14 +138,33 @@
     panels.forEach(function (p) { p.classList.add("in"); });
   }
 
-  /* ---------- Contactformulier (demo) ---------- */
+  /* ---------- Contactformulier (Web3Forms) ---------- */
   var form = document.querySelector("#contact-form");
   if (form) {
+    var okNote = form.querySelector(".form-ok");
+    var errNote = form.querySelector(".form-err");
+    var submitBtn = form.querySelector('button[type="submit"]');
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var note = form.querySelector(".form-status");
-      if (note) note.hidden = false;
-      form.reset();
+      if (okNote) okNote.hidden = true;
+      if (errNote) errNote.hidden = true;
+      if (submitBtn) submitBtn.disabled = true;
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (res && res.success) {
+            form.reset();
+            if (okNote) okNote.hidden = false;
+          } else if (errNote) {
+            errNote.hidden = false;
+          }
+        })
+        .catch(function () { if (errNote) errNote.hidden = false; })
+        .then(function () { if (submitBtn) submitBtn.disabled = false; });
     });
   }
 
